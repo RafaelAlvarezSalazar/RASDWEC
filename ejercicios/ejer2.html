@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*1. Define una variable saludo=”Hola” como variable local dentro de una 
+        función saludar() que muestre una ventana emergente con el valor de la 
+        variable saludo
+        • Invoca la función
+        • Muestra la variable desde fuera de la función mediante un window.alert*/
+        
+        function saludar()
+        {
+           var saludo="hola"
+           alert(saludo);
+        }
+        saludar();
+        //alert(saludo);
+       
+        /*2. Define una variable global despedida=”Adiós” fuera de una función 
+        despedir( ) que muestre una ventana emergente con el valor de la variable
+        despedida.
+        • Invoca la función
+        • Muestra la variable desde fuera de la función*/
+
+        var despedida = "Adios";
+        function despedir(){
+            alert(despedida);
+        }
+        despedir();
+        alert(despedida);
+
+    </script>
+</body>
+</html>
