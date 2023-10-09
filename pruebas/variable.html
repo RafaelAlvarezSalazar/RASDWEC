@@ -6,41 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="parrafo1"></p>
-    <p id="parrafo2"></p>
-    <p id="parrafo3"></p>
-    <p id="parrafo4"></p>
+    <div id="nombre"></div>
+<script>
     
-    <script> 
-    
-    var nombre;
-    var nacimiento;
-
-    document.getElementById("parrafo1").innerHTML= nombre;
-
-    nombre= "belen";
-    
-    document.getElementById("parrafo2").innerHTML= nombre;
-
-    nacimiento= 2003;
-
-    document.getElementById("parrafo3").innerHTML = nacimiento
-
-    let lista = [1,2,3,4];
-
-    //alert(typeof(lista)); 
-
-    var a = 1;
-
-    //alert(typeof(a))
-    
-    let animal =[perro,gato,leon];
-
-    alert(animal instanceof String);
-
-    let arr = [1, 2, 3];
-    alert( arr instanceof Array ); // verdadero
-    alert( arr instanceof Object ); // verdadero
+        /*let a = ['lunes', 'Martes',2,3,4]
+        let cadena = a.join(':');
+        console.log(cadena);
+        let notas = "5-4-6-7";
+        let arrayNotas = notas.split("-");
+        console.log(arrayNotas);*/
+        
+        let arraySocios = [];
+        for(i=0 ; i<=9 ; i++){
+            arraySocios[i] = prompt("Escribe un nombre del socio nº" + i); 
+             
+    };
+        
+        console.log(arraySocios);
+        console.log("Hay " + arraySocios.length);
+        //console.log(arraySocios.sort());
+        //document.getElementById("nombre").innerHTML = arraySocios;
 
     </script>
 
