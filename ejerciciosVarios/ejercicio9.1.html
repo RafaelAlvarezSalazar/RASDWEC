@@ -9,11 +9,13 @@
     <script>
         let frase = prompt ("Escribe una frase");
         console.log(frase)
-
-        let arr= []
-        arr = frase.split()
-        console.log(arr);
+        let arr = frase.split(' '); 
+        const ultimoElemento = arr[arr.length-1];
         
+        console.log("Primer Elemento : " + arr[0]);
+        console.log("Ultimo Elemento : " + ultimoElemento);
+        console.log("Numero de palabras : " + arr.length);
+    
     </script>
 </body>
 </html>
