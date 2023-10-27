@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //obtener los dias que han pasado entre hoy y otra fecha fija(7-Mayo-1950 ; 27-Octubre-2023)
+
+        const fechaActual = new Date();
+        const fechaAntigua= new Date("May 7 1990")
+
+        const diferencia = fechaActual.getTime()-fechaAntigua.getTime();
+
+       const seg = diferencia * 1000 ;
+       const min = (seg % 1) * 60 ;
+       const horas = (min % 1) * 60 ;
+       const dias = (horas % 1) * 24;
+       const meses = (dias % 1) * 30;
+       const años = (meses % 1) * 12;
+        
+       console.log(`${años} : ${meses} : ${dias} : ${horas} : ${min} : ${seg}`)
+        
+        
+        
+    </script>
+</body>
+</html>
