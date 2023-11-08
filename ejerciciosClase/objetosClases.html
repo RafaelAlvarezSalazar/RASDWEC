@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        function tvSamsung(nom,cate,ud,precio){
+            this.nombre = nom;
+            this.categoria = cate;
+            this.unidades = ud;
+            this.precio = precio;
+            this.importe=function(){
+                return this.unidades * this.precio;
+            }
+        }
+
+        var television = new tvSamsung("TV Samsung 42\"" , "Televisores" , 4 , 345.95 );
+        console.log(television.importe())
+
+        function Productos(nom,cate,ud,precio){
+            this.nombre = nom;
+            this.categoria = cate;
+            this.unidades = ud;
+            this.precio = precio;
+            this.importe=function(){
+                return this.unidades * this.precio;
+            }
+            this.getInfo = function(){
+                return this.nombre + "(" + this.categoria + "): " + this.unidades + "x" + this.precio + "$ = "
+                + this.importe() 
+            }
+            this.toString = function(){
+                return "Cadena de texto" 
+            }
+        }
+
+        var producto1 = new Productos("LG" , "Televisores" , 100 , 300 )
+        var producto2 = new Productos("Samsung" , "Televisores" , 180 , 150 )
+        var producto3 = new Productos("LG" , "Televisores" , 200 , 500 )
+        
+        function Televisores(tamanio){
+            Productos.call(nom,cate,ud,precio);
+            this.tamanio=tamanio;
+            this.toString = function(){
+                return "Cadena de texto" 
+            }
+        }
+
+        
+
+        Productos.prototype.valueOf= function(){ return 5 }
+        Televisores.prototype.valueOf= function(){ return 5 }
+        
+
+        console.log(producto1.getInfo() + " " + producto1.valueOf() + " " + producto1.toString())
+        console.log(producto2.getInfo() + " " + producto2.valueOf() + " " + producto2.toString())
+
+        </script>
+
+  </body>
+</html>
