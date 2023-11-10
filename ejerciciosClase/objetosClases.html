@@ -37,10 +37,10 @@
             }
         }
 
-        var producto1 = new Productos("LG" , "Televisores" , 100 , 300 )
-        var producto2 = new Productos("Samsung" , "Televisores" , 180 , 150 )
-        var producto3 = new Productos("LG" , "Televisores" , 200 , 500 )
-        
+        //var producto1 = new Productos("LG" , "Televisores" , 1000 , 3000 )
+        //var producto2 = new Productos("Samsung" , "Televisores" , 1800 , 1500 )
+        //var producto3 = new Productos("Sony" , "Televisores" , 2000 , 5000 )
+
         function Televisores(tamanio){
             Productos.call(nom,cate,ud,precio);
             this.tamanio=tamanio;
@@ -55,8 +55,47 @@
         Televisores.prototype.valueOf= function(){ return 5 }
         
 
-        console.log(producto1.getInfo() + " " + producto1.valueOf() + " " + producto1.toString())
-        console.log(producto2.getInfo() + " " + producto2.valueOf() + " " + producto2.toString())
+        //console.log(producto1.getInfo() + " " + producto1.valueOf() + " " + producto1.toString())
+        //console.log(producto2.getInfo() + " " + producto2.valueOf() + " " + producto2.toString())
+
+        /*  Act 4.4 Crea 5 productos y guárdalos en un array. Crea las siguientes funciones 
+        (todas reciben ese array como parámetro):
+            • prodOrdenPorNombre() Devuelve un array con los productos ordenados alfabéticamente 
+            • prodOrdenPorPrecio() devuelve un array con los productos ordenados por importe 
+            • prodPrecioTotal() Devuelve el importe total del los productos del array, con 2 decimales 
+            • prodConMenosUnidades() Además del array recibe como segundo parámetro un número y devuelve un 
+            array con todos los productos que tienen menos unidades que las indicadas 
+            • prodLista() Devuelve una cadena que dice ‘Listado de productos:’ y en cada línea un guión 
+            y la información de un producto del array*/
+
+        var producto1 = new Productos("LG" , "Televisores" , 100 , 300 )
+        var producto2 = new Productos("Samsung" , "Televisores" , 180 , 150 )
+        var producto3 = new Productos("Sony" , "Televisores" , 150 , 200 )
+        var producto4 = new Productos("Xiaomi" , "Televisores" , 650 , 100 )
+        var producto5 = new Productos("LG" , "Televisores" , 700 , 200 )
+        
+        const arrayProduc = [producto1,producto2,producto3,producto4,producto5]
+        
+
+        function prodOrdenPorNombre(arrayProduc){
+        console.log(arrayProduc.sort())
+        }
+
+        function prodOrdenPorPrecio(arrayProduc){
+        
+        }
+
+        function prodPrecioTotal(arrayProduc){
+    
+        }
+
+        function prodConMenosUnidades(arrayProduc){
+        
+        }
+
+        function prodLista(arrayProduc){
+
+        }
 
         </script>
 
