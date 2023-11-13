@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Crear una lista de contactos como un array de objetos
+const listaDeContactos = [
+  {
+    nombre: "Juan Perez",
+    telefono: "123-456-7890",
+    correo: "juan@example.com"
+  },
+  {
+    nombre: "Ana García",
+    telefono: "987-654-3210",
+    correo: "ana@example.com"
+  },
+  {
+    nombre: "Carlos Rodríguez",
+    telefono: "555-555-5555",
+    correo: "carlos@example.com"
+  }
+];
+
+// Pedir al usuario que ingrese un nuevo contacto
+const nombreNuevoContacto = prompt("Ingrese el nombre del nuevo contacto:");
+const telefonoNuevoContacto = prompt("Ingrese el número de teléfono del nuevo contacto:");
+const correoNuevoContacto = prompt("Ingrese el correo electrónico del nuevo contacto:");
+
+// Crear un objeto para el nuevo contacto
+const nuevoContacto = {
+  nombre: nombreNuevoContacto,
+  telefono: telefonoNuevoContacto,
+  correo: correoNuevoContacto
+};
+
+// Agregar el nuevo contacto al final de la lista
+listaDeContactos.push(nuevoContacto);
+
+// Mostrar el primer contacto
+const primerContacto = listaDeContactos[0];
+console.log(`${primerContacto.nombre} / ${primerContacto.telefono} / ${primerContacto.correo}`);
+
+// Mostrar el último contacto
+const ultimoContacto = listaDeContactos[listaDeContactos.length - 1];
+console.log(`${ultimoContacto.nombre} / ${ultimoContacto.telefono} / ${ultimoContacto.correo}`);
+
+    </script>
+</body>
+</html>
