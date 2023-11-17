@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio-Tren</title>
+</head>
+<body>
+    <script>
+    function calculoPersonas(numero) {
+        const array = []
+        while (numero % 10 !== 0) {
+          array.push(numero % 10)
+          numero = Math.floor(numero / 10)
+        }
+      
+        let bajados = 0
+        let subidos = 0
+      
+        while (array.length) {
+          subidos += array.shift()
+          bajados += array.shift() ?? 0
+        }
+        return subidos - bajados
+      }
+      
+      console.log(calculoPersonas(95331))
+      
+      </script>
+</body>
+</html>
