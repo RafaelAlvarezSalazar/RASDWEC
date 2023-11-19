@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tarea continua</title>
+    </head>
+    <body>
+        
+        <script>
+            function showContact(array, indice){
+                if(array instanceof Array && typeof(indice)== "number"){
+                    alert("Contacto: "+ array[indice].nombre + " / " + array[indice].telefono + " / " + array[indice].correo);
+                }
+            }
+            function showAllContact(array){
+                if(array instanceof Array ){
+                    let contactos="";
+                    listaDeContactos.forEach(function(contacto) {
+                        contactos+="Contacto: "+contacto.nombre + " / " + contacto.telefono + " / " + contacto.correo + "\n";
+                    });
+                    alert(contactos);
+                }
+            }
+            function addNewContact(array,nombre,telf,correo){
+                if(array instanceof Array&&nombre!==""&&telf!==""&&correo!==""){
+                        //Se añade
+                        array.push({nombre: nombre,
+                                    telefono: telf,
+                                    correo: correo});
+                    }    
+            }
+            const listaDeContactos = [
+            {
+             nombre: "Maxwell writh",
+             telefono: "(0191)719 6495",
+             correo: "juan@gmail.com"
+            },
+            {
+            nombre: "raja villareal",
+            telefono: "0866 398 2895",
+            correo: "ana@gmail.com"
+            },
+            {
+            nombre: "Carlos Rodríguez",
+            telefono: "0800 1111" + 7 ,
+            correo: "carlos@gmail.com"
+            }
+            ];
+                                   
+            let bucle=true;   
+
+            while(bucle){
+
+                                 
+            let opcion = prompt("Primer contacto (primero)\n"+
+                                "Ultimo contacto (ultimo)\n"+
+                                "Mostrar todos contactos (todos)\n"+
+                                "Añadir un nuevo contacto (nuevo)\n"+
+                                "Salir(Salir)");
+            switch(opcion){
+                case "primero":
+                    showContact(listaDeContactos,0);
+                    break;
+                case "ultimo":
+                    showContact(listaDeContactos,listaDeContactos.length-1);
+                    break;
+                case "todos":
+                    showAllContact(listaDeContactos);
+                    break;
+                case "nuevo": 
+                    
+                    let userNombre = prompt("Dame el nombre");
+                    let userTelefono = prompt("Dame el telefono");
+                    let userCorreo = prompt("Dame el correo");
+                     
+                    addNewContact(listaDeContactos,userNombre,userTelefono,userCorreo);
+                break;
+                case "salir":
+                    alert("Saliendo...");
+                    bucle=false;
+                    break;
+                default:
+                    console.log(opcion);
+                    alert("Opcion incorrecta");
+                    break;
+                }
+            } 
+        </script>
+    </body>
+</html>
