@@ -6,7 +6,6 @@
     <body>
         
         <script>
-            //Declara e inicializa las variables donde se almacenara toda la informacion (en esta version en una sola, en un array)
             const listaDeContactos = [
             {
              nombre: "Maxwell writh",
@@ -28,8 +27,8 @@
             while(bucle){
 
                                  
-            let opcion = prompt("Mostrar el primer contacto (primero)\n"+
-                                "Mostrar el último contacto (ultimo)\n"+
+            let opcion = prompt("Primer contacto (primero)\n"+
+                                "Ultimo contacto (ultimo)\n"+
                                 "Mostrar todos contactos (todos)\n"+
                                 "Añadir un nuevo contacto (nuevo)\n"+
                                 "Salir del programa(Salir)");
@@ -48,21 +47,20 @@
                     alert(contactos);
                     break;
                 case "nuevo": 
-                    //Se piden datos del usuario
-                    let userNombre = prompt("Dame el nombre del contacto");
-                    let userTelefono = prompt("Dame el telefono del contacto");
-                    let userCorreo = prompt("Dame el correo del contacto");
+                    
+                    let userNombre = prompt("Dame el nombre");
+                    let userTelefono = prompt("Dame el telefono");
+                    let userCorreo = prompt("Dame el correo");
                     
                     if(userNombre!==""&&userTelefono!==""&&userCorreo!==""){
-                        //Se añade
+                
                         listaDeContactos.push({nombre: userNombre,
                                             telefono: userTelefono,
                                             correo: userCorreo});
                     }          
-                   // console.log("Ultimo contacto: "+ listaDeContactos[listaDeContactos.length-1].nombre + " / " + listaDeContactos[listaDeContactos.length-1].telefono + " / " + listaDeContactos[listaDeContactos.length-1].correo);          
                     break;
                 case "salir":
-                    alert("Saliendo...");
+                    alert("Saliendo");
                     bucle=false;
                     break;
                 default:
