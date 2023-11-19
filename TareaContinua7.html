@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tarea continua</title>
+  </head>
+  <body>
+    <script>
+      function showContact(array, indice) {
+        if (Array.isArray(array) && typeof indice === "number") {
+          alert(
+            `Contacto: ${array[indice].nombre} / ${array[indice].telefono} / ${array[indice].correo}`
+          );
+        }
+      }
+
+      function showAllContact(array) {
+        if (Array.isArray(array)) {
+          let contactos = "";
+          array.forEach(function (contacto) {
+            contactos += `Contacto: ${contacto.nombre} / ${contacto.telefono} / ${contacto.correo}\n`;
+          });
+          alert(contactos);
+        }
+      }
+
+      function addNewContact(array, nombre, telf, correo) {
+        if (Array.isArray(array) && nombre !== "" && telf !== "" && correo !== "") {
+          array.push({ nombre, telefono: telf, correo });
+        }
+      }
+
+      function ordenArray(array, ord) {
+        switch (ord) {
+          case "1":
+            array.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            break;
+          case "2":
+            array.sort((a, b) => a.telefono.localeCompare(b.telefono));
+            break;
+          case "3":
+            array.sort((a, b) => a.correo.localeCompare(b.correo));
+            break;
+        }
+      }
+
+      const listaDeContactos = [
+            {
+             nombre: "Maxwell writh",
+             telefono: "(0191)719 6495",
+             correo: "juan@gmail.com"
+            },
+            {
+            nombre: "raja villareal",
+            telefono: "0866 398 2895",
+            correo: "ana@gmail.com"
+            },
+            {
+            nombre: "Carlos Rodríguez",
+            telefono: "0800 1111" + 7 ,
+            correo: "carlos@gmail.com"
+            }
+            ];
+
+      let bucle = true;
+
+      while (bucle) {
+        let opcion = prompt(
+          "Mostrar el primer contacto (primero)\n" +
+            "Mostrar el último contacto (ultimo)\n" +
+            "Mostrar todos los contactos (todos)\n" +
+            "Añadir un nuevo contacto (nuevo)\n" +
+            "Ordenar agenda (ordenar)\n" +
+            "Salir del programa (salir)"
+        );
+
+        switch (opcion.toLowerCase()) {
+          case "primero":
+            showContact(listaDeContactosº, 0);
+            break;
+          case "ultimo":
+            showContact(listaDeContactos, listaDeContactos.length - 1);
+            break;
+          case "todos":
+            showAllContact(listaDeContactos);
+            break;
+          case "nuevo":
+            let userNombre = prompt("Dame el nombre");
+            let userTelefono = prompt("Dame el telefono");
+            let userCorreo = prompt("Dame el correo");
+            addNewContact(listaDeContactos, userNombre, userTelefono, userCorreo);
+            break;
+          case "ordenar":
+            let ord = prompt("ordenar : \n1(nombre)\n2(telefono)\n3(correo)");
+            ordenArray(listaDeContactos, ord);
+            showAllContact(listaDeContactos);
+            break;
+          case "salir":
+            alert("Saliendo");
+            bucle = false;
+            break;
+          default:
+            alert("Opción incorrecta");
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
