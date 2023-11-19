@@ -7,41 +7,43 @@
         
         <script>
             //Declara e inicializa las variables donde se almacenara toda la informacion (en esta version en una sola, en un array)
-            let arrayContactos = [{nombre:"Maxwell Wright",
-                                   telefono: "(0191)7196495",
-                                   correo: "MaxwellWright@nonummyac.co.uk"},
-                                   {nombre:"Raja Villareal",
-                                   telefono: "08663982895",
-                                   correo: "RajaVillareal@sed.com"},
-                                   {nombre:"Helen Richards",
-                                   telefono: "08001111",
-                                   correo: "libero@convallis.edu"}];
-            let opcion = prompt("Mostrar el primer contacto (primero)\n"+
-                                "Mostrar el último contacto (último)\n"+
-                                "Añadir un nuevo contacto (nuevo)");
+            const listaDeContactos = [
+            {
+             nombre: "Maxwell writh",
+             telefono: "(0191)719 6495",
+             correo: "juan@gmail.com"
+            },
+            {
+            nombre: "raja villareal",
+            telefono: "0866 398 2895",
+            correo: "ana@gmail.com"
+            },
+            {
+            nombre: "Carlos Rodríguez",
+            telefono: "0800 1111" + 7 ,
+            correo: "carlos@gmail.com"
+            }
+            ];
                                 
             switch(opcion){
                 case "primero":
-                    alert("Primer contacto: "+ arrayContactos[0].nombre + " / " + arrayContactos[0].telefono + " / " + arrayContactos[0].correo);
+                    alert("Primer contacto: "+ listaDeContactos[0].nombre + " / " + listaDeContactos[0].telefono + " / " + listaDeContactos[0].correo);
                     break;
                 case "último":
-                    alert("Ultimo contacto: "+ arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo); 
+                    alert("Ultimo contacto: "+ listaDeContactos[listaDeContactos.length-1].nombre + " / " + listaDeContactos[listaDeContactos.length-1].telefono + " / " + listaDeContactos[listaDeContactos.length-1].correo); 
                     break;
                 case "nuevo": 
-                    //Se piden datos del usuario
-                    let userNombre = prompt("Dame el nombre del contacto");
-                    let userTelefono = prompt("Dame el telefono del contacto");
-                    let userCorreo = prompt("Dame el correo del contacto");
+                
+                    let userNombre = prompt("Dame el nombre");
+                    let userTelefono = prompt("Dame el telefono");
+                    let userCorreo = prompt("Dame el correo");
                     
                     if(userNombre!==""&&userTelefono!==""&&userCorreo!==""){
-                        //Se añade
-                        arrayContactos.push({nombre: userNombre,
+                       
+                        listaDeContactos.push({nombre: userNombre,
                                             telefono: userTelefono,
                                             correo: userCorreo});
                     }          
-                   // console.log("Ultimo contacto: "+ arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo);          
-                    break;
-                default:
                     break;
                 }
         </script>
