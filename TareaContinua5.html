@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tarea continua</title>
+    </head>
+    <body>
+        
+        <script>
+            //Declara e inicializa las variables donde se almacenara toda la informacion (en esta version en una sola, en un array)
+            const listaDeContactos = [
+            {
+             nombre: "Maxwell writh",
+             telefono: "(0191)719 6495",
+             correo: "juan@gmail.com"
+            },
+            {
+            nombre: "raja villareal",
+            telefono: "0866 398 2895",
+            correo: "ana@gmail.com"
+            },
+            {
+            nombre: "Carlos Rodríguez",
+            telefono: "0800 1111" + 7 ,
+            correo: "carlos@gmail.com"
+            }
+            ];
+            let bucle=true;                       
+            while(bucle){
+
+                                 
+            let opcion = prompt("Mostrar el primer contacto (primero)\n"+
+                                "Mostrar el último contacto (ultimo)\n"+
+                                "Mostrar todos contactos (todos)\n"+
+                                "Añadir un nuevo contacto (nuevo)\n"+
+                                "Salir del programa(Salir)");
+            switch(opcion){
+                case "primero":
+                    alert("Primer contacto: "+ listaDeContactos[0].nombre + " / " + listaDeContactos[0].telefono + " / " + listaDeContactos[0].correo);
+                    break;
+                case "ultimo":
+                    alert("Ultimo contacto: "+ listaDeContactos[listaDeContactos.length-1].nombre + " / " + listaDeContactos[listaDeContactos.length-1].telefono + " / " + listaDeContactos[listaDeContactos.length-1].correo); 
+                    break;
+                case "todos":
+                    let contactos="";
+                    listaDeContactos.forEach(function(contacto) {
+                        contactos+="Contacto: "+contacto.nombre + " / " + contacto.telefono + " / " + contacto.correo + "\n";
+                    });
+                    alert(contactos);
+                    break;
+                case "nuevo": 
+                    //Se piden datos del usuario
+                    let userNombre = prompt("Dame el nombre del contacto");
+                    let userTelefono = prompt("Dame el telefono del contacto");
+                    let userCorreo = prompt("Dame el correo del contacto");
+                    
+                    if(userNombre!==""&&userTelefono!==""&&userCorreo!==""){
+                        //Se añade
+                        listaDeContactos.push({nombre: userNombre,
+                                            telefono: userTelefono,
+                                            correo: userCorreo});
+                    }          
+                   // console.log("Ultimo contacto: "+ listaDeContactos[listaDeContactos.length-1].nombre + " / " + listaDeContactos[listaDeContactos.length-1].telefono + " / " + listaDeContactos[listaDeContactos.length-1].correo);          
+                    break;
+                case "salir":
+                    alert("Saliendo...");
+                    bucle=false;
+                    break;
+                default:
+                    console.log(opcion);
+                    alert("Opcion incorrecta");
+                    break;
+                }
+            } 
+        </script>
+    </body>
+</html>
