@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Ejercicio1:
+        Abrir una nueva ventana de dimensiones 500 200px en la posicion(100,200)
+        Escribir en ella (con Documento.write) un titulo h1 que diga 'Hola'
+        Desplazarla 300px hacia abajo y 100 a la izquierda
+        Cerrarla-->
+
+        
+        <p id="ventana"></p>
+        <script>
+            document.getElementById("ventana").innerHTML= texto;
+            function crearVentana(){
+                miVentana = window.open("", "miVentana", "width=500,height=200");
+                miVentana.moveTo(500,100)
+                miVentana.document.write("<h1>HOLA</h1>")
+            }
+            function desplazar(){
+                miVentana.moveTo(300,100)
+                window.History.length
+            }
+            function cerrarVentana(){
+            miVentana.close()
+            }
+        </script>
+             
+        <button onclick="crearVentana()">Crear ventana</button>
+        <button onclick="desplazar()">Desplazar</button>
+        <button onclick="cerrarVentana()">Cerrar</button>
+        
+    
+    </div>
+        <p></p>
+    </body>
+    </html>

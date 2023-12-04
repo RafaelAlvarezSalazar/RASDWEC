@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="boton" value="PULSAME">
+    <script>
+
+    /*  A)WEB BOTON "PULSAME"
+         1-Si pulsado la pagina cambia de color(aletorio)
+         2-si pulsado en cualquier otra parte vuelve a blanco
+        B)eventos (event) muestre la posicion del raton*/
+    
+    document.getElementById("boton").addEventListener("click",cambiarColor,false);   
+    function cambiarColor(){
+        var a=Math.floor(Math.random()*255);  
+        var b=Math.floor(Math.random()*255);  
+        var c=Math.floor(Math.random()*255);  
+    document.getElementById('fondo').style.backgroundColor='rgb('+a+','+b+','+c+')'
+    }
+
+    document.addEventListener('click',()=>{
+        var boton = document.getElementById('boton')
+        var objetivo =  document.target;
+        if(objetivo!== boton ){document.getElementById('fondo').style.backgroundColor = 'white'}
+    })
+      
+    </script>
+</body>
+</html>

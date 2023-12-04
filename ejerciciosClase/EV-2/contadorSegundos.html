@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio window</title>
+    
+    
+</head>
+<body>
+    <p id="contador"></p>
+    <script>
+        var int = setInterval(contador,1000)
+        function contador(){
+            const fechaActual = new Date();
+            document.getElementById("contador").innerHTML = fechaActual.getSeconds()
+        }
+    </script>
+    <button onclick="reloj=setInterval(contador,1000)">empezar</button>
+    <button onclick="clearTimeout(reloj)">cancelar</button>
+</body>
+</html>
+
+
+
