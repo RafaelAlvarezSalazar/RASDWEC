@@ -8,23 +8,21 @@
 <body> 
     
     <p id="contador"></p>
-    <button id="boton">Aumentar contador</button>
-    <button id="boton2">Disminuir contador</button>
    
     <script>
-        //[10]
-        var cont = document.getElementById("contador")
-        var boton= document.getElementById("boton")
-        var boton2= document.getElementById("boton2")
+        //Añadir event.preventDefault()
+        var cont = document.getElementById("contador")    
         var contador = 0;
-        boton.onclick = function () {
+        document.addEventListener('click',()=>{
+                event.preventDefault()
                 contador++;
                 cont.textContent = contador;
-            }
-        boton2.onclick = function () {
+        })
+        document.addEventListener('mousedown',()=>{
+                event.preventDefault()
                 contador--;
                 cont.textContent = contador;
-        }
+        })
     </script>
 </body>
 </html>
