@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 1 - Obtener la fecha y hora actual
+        const fechaActual = new Date()
+        console.log(fechaActual)
+
+        // 2 - Mezclar dos Arrays
+
+        const array1 = [1,2,4,5];
+        const array2 = [6,7,8,9];
+
+        const arrayMezclado = [...array1 , ...array2];
+
+        console.log(arrayMezclado)
+
+        // 3 - Borrar elementos repetidos en un array
+
+        const arrayElemRepe = [1,1,1,2,2,2,3,3,3]
+        const arrayUnico = [...new Set(arrayElemRepe)]
+        console.log(arrayUnico)
+
+        // 4 - Generar un número aleatorio entre dos valores dados
+
+        function numAleatorio(num1 , num2){
+        num1= 1 
+        num2= 7
+        return Math.round(Math.random() * (num1 - num2) + num2);
+        }
+        console.log("Numero Aleatorio : " + numAleatorio())
+
+        // 5 - Generar una cadena alfanumérica aleatoria
+        
+        function cadenaAlfanuméricaAleatoria() {
+        let cadena =  Math.random().toString(36).toUpperCase().slice(2);
+        return cadena;
+        }
+        console.log(cadenaAlfanuméricaAleatoria());
+        
+        // 6 - Convertir un objeto en un array
+
+        const usuarios1 = [
+        { id: 1, nombre: "Juan", edad: 25 },
+        { id: 2, nombre: "María", edad: 30 },
+        ];
+
+        const arrayUsuarios = Object.entries(usuarios1)
+        console.log(arrayUsuarios)
+        
+        // 7 - Copiar texto al portapapeles
+        
+
+
+        // 8 - Comprobar si una propiedad existe IN un objeto
+
+        const usuarios2 = { id: 3, nombre: "Pedro", edad: 20 }
+        console.log('nombre' in usuarios2)
+        
+        // 9 - Ordenar un Array en orden ascendente
+
+        const miArray = [5,8,3,4,9,2,1];
+        console.log("Array ordenado de forma ascendente " + miArray.sort())
+
+        // 10 - Obtener la longitud de un objeto
+
+        const usuarios3 = [
+        { id: 1, nombre: "Juan", edad: 25 },
+        { id: 2, nombre: "María", edad: 30 },
+        { id: 3, nombre: "Pedro", edad: 20 },
+        { id: 4, nombre: "Ana", edad: 35 },
+        
+        ];
+
+        console.log("Longitud del array : "+ usuarios3.length)
+
+    </script>
+</body>
+</html>
