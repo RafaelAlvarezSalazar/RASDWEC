@@ -54,19 +54,19 @@
         const arrayUsuarios = Object.entries(usuarios1)
         console.log(arrayUsuarios)
         
-        // 7 - Copiar texto al portapapeles
-        
-
-
+        // 7 - Copiar texto al portapapeles    
+    
+            //navigator.clipboard.writeText(text)
+            
         // 8 - Comprobar si una propiedad existe IN un objeto
 
         const usuarios2 = { id: 3, nombre: "Pedro", edad: 20 }
         console.log('nombre' in usuarios2)
         
-        // 9 - Ordenar un Array en orden ascendente
+        // 9 - Ordenar un Array en orden ascendente    
 
-        const miArray = [5,8,3,4,9,2,1];
-        console.log("Array ordenado de forma ascendente " + miArray.sort())
+        const miArray = [5,20,15,8,3,4,9,2,1];
+        console.log("Array ordenado de forma ascendente " + miArray.sort((a,b)=>a-b))
 
         // 10 - Obtener la longitud de un objeto
 
@@ -78,8 +78,9 @@
         
         ];
 
-        console.log("Longitud del array : "+ usuarios3.length)
-
+        console.log("Longitud del array : "+ Object.keys(usuarios3).length)
+         
+        
     </script>
 </body>
 </html>
