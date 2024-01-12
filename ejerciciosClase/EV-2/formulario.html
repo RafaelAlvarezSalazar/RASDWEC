@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+
+        Nombre: <input type="text"><br>
+
+        Apellidos: <input type="text"><br>
+        
+        DNI: <input type="text"><br>
+        
+        Sexo : <br>
+        <input type="radio" name="Sexo" value="hombre" checked>Hombre<br>
+        <input type="radio" name="Sexo" value="Mujer">Mujer<br>
+        
+        Incluir mi foto: <input type="file"><br><br>
+     
+      
+        <select id="aprobar" >
+            <option value="10">Saco 10 en DWEC</option>
+            <option value="9">Saco 9 en DWEC</option>
+            <option value="8">Saco 8 en DWEC</option>
+            <option value="añadir" id="añadir">Añadir</option>
+        </select> <br>
+        
+        <input type="submit" name="enviar" value="Guardar cambios">
+        <input type="reset" name="limpiar" value="Borrar los datos introducidos">
+        
+            <script>
+                var elemento=document.getElementById("aprobar");
+                    for(i=0 ; i<elemento.options.length ; i++){
+                    alert("Valor de la opcion " + elemento.options[i].value);
+                    }
+                var sel=elemento.selectedIndex;
+                alert("El valor de la opcion seleccionada es " + elemento.options[sel].value + " y el texto asociado es" + elemento.options[sel].text);
+                // Para cambiar  el índice seleccionado:
+                elemento.selectedIndex = 0;
+
+                document.getElementById("añadir").addEventListener("selectionchange" , opcion)
+                function opcion(){
+                    prompt("Introduce una opcion");
+                    
+                }
+            </script> 
+
+    </form>
+    
+
+    
+</body>
+</html>

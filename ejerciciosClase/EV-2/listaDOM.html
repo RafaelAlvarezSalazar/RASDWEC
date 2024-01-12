@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Lista de la compra</p>
+    <ul id="lista">
+        <li>Azucar</li>
+        <li>Cerveza</li>
+        <li>Pan</li>
+        <li>Patatas</li>
+    </ul>
+    <input type="text" id="elementoLista"><br>
+    <button id="añadir">Añadir</button>
+    <script>
+         var parrafo = document.createElement("li");
+         var texto = document.createTextNode(document.getElementById("elementoLista").value);
+         parrafo.appendChild(texto)
+
+         var cont = document.getElementById("lista")
+         cont.appendChild(parrafo)
+    </script>
+</body>
+</html>
