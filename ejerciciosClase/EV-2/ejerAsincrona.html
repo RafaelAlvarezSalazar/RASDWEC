@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="generarPromesa()">Generar Promesa</button>
+    <div id="texto">Mensajes:</div>
+    <script>
+        /*Pagina web con div para mensajes y boton que genre una promesa que invoque a una funcion llamada probarPromise
+        
+        La funcion probarPromise debe:
+        Contar las veces que se pulsa el boton y saca en el div los siguientes cuatro mensajes:
+        1)antes de contruir la promesa : "cont) empieza el codigo sincrono"
+        2)dentro de la promesa           "cont) Dentro de la promesa, anres del timeout . Empieza el codigo asincrono"
+        3)dentro del .then               "cont) Dentro del .then.codigo asincrono terminado"
+        4)fuera de la promesa            "cont) Codifo despues del .then. codifo sincrono Terinado"
+        Para la promesa utilizar:
+                            setTimeout(function(){
+                                resolve(thiscontador)),Math.random()*4000+1000
+                            })
+
+        insertAdjacentHTML("beforeend", texto)
+        */
+        let contador = 0
+        function probarPromise() { 
+        let thiscontador = ++contador;
+        
+
+        const promesa = new Promise((resolve, reject) => {
+        setTimeout(() => {
+        resolve(thiscontador);
+        }, Math.random() * 4000 + 1000);
+
+
+    });
+
+        }
+       
+    function generarPromesa() {
+    probarPromise();
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Lista de la Compra</h1>
+    <ul id="lista"></ul>
+    <form id="formLista">
+      <input type="text" />
+      <input type="submit" value="Añadir" />
+    </form>
+    <script>
+      const lista = document.getElementById("lista");
+      const formLista = document.getElementById("formLista");
+      
+      formLista.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const li = document.createElement("li");
+        const input = formLista.querySelector("input");
+        li.innerText = input.value;
+        input.value = null;
+        lista.appendChild(li);
+        ordenarLista();
+      });
+
+      function ordenarLista() {
+        const nuevaLista = Array.from(lista.children).sort((a, b) =>
+          a.innerText.localeCompare(b.innerText)
+        );
+        lista.innerHTML = null;
+        nuevaLista.forEach((li) => lista.appendChild(li));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- patternMismatch ; rangeOverflow ; rangeUnderflow ; valueMissing  -->
+</head>
+<body>
+    <fieldset>
+    <legend>Datos personales</legend>
+    <div align="center">
+        Introduce tu nombre <input type="text" id="nombre" name="nombre"><br><br>
+        Introduce tu NIF <input type="text" id="NIF" name="NIF"> <br><br>
+        Mensaje <br><br>
+        <textarea name="texto" id="texto" cols="100" rows="10"></textarea>
+    </div>
+    </fieldset><br>
+    <div align="center">
+
+        Elige un color: <br>
+        Rojo <input type="radio" name="color"> <br>
+        Verde <input type="radio" name="color"> <br>
+        Azul <input type="radio" name="color"> <br>
+        <br>
+        
+        Selecciona una asignatura 
+        <select name="asignatura" id="asignatura">
+                <option>DWES</option>
+                <option>DWEC</option>
+                <option>Despliegue de Aplicaciones</option>
+                <option>FOL</option>
+                <option>Interfaces Web</option>
+        </select>
+        <br><br>
+        Selecciona los días con disponibilidad <br>
+    <input type="checkbox" class="dias_checkbox" value="Lunes">Lunes <br>
+    <input type="checkbox" class="dias_checkbox" value="Martes">Martes <br>
+    <input type="checkbox" class="dias_checkbox" value="Miércoles">Miércoles <br>
+    <input type="checkbox" class="dias_checkbox" value="Jueves">Jueves <br>
+    <input type="checkbox" class="dias_checkbox" value="Viernes">Viernes <br>
+    <input type="checkbox" id="todos_dias" value="todos_dias_checkbox" onclick="seleccionarTodo()">Seleccionar todo <br>
+    </div>
+    <script>
+        function seleccionarTodo() {
+            var checkboxes = document.getElementsByClassName('dias_checkbox');
+            var selectTodoCheckbox = document.getElementById('todos_dias');
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = selectTodoCheckbox.checked;
+            }
+        }
+    </script>
+</body>
+</html>

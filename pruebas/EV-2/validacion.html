@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var formulario = document.getElementById("miFormulario")
+        var formulario2 = document.form["miFormulario"]
+        var formulario3=document.getElementsByTagName("forms")[1]
+        var formulario4 = document.forms[0]
+
+        window.addEventListener("load", inicio);
+         function inicio() {
+         document.getElementById("enviar").addEventListener("click", validar );
+         }
+
+        function validarNombre(){
+            var elemento=document.getElementById("nombre")
+            if(elemento.value==""){
+                alert("El nombre no puede dejarse vacio")
+                return false
+            }
+            return true;
+        }
+
+        function validarTelefono(){
+            var elemento= document.getElementById("telefono")
+            if(isNaN(elemento.value)){
+                alert("El campo teleno tiene que ser numerico")
+                return false
+            }
+            return true
+        }
+
+        function validar(e){
+            if(validarNombre() && validarTelefono() && confirm("estoy seguro de que quiero enviar el formulario")){
+                return true
+            }else{
+                e.preventDefault() 
+                return false
+            }
+        }
+        
+    </script>
+</body>
+</html>
