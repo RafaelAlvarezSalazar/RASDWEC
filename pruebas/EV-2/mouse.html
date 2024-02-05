@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="eventos">Obtener info</h1>
+    <h2 id="parrafo1">parrafo1</h2>
+    <h2 id="parrafo2">parrafo2</h2>
+    <script>
+        document.getElementById("eventos").addEventListener("mouseover",manejador)
+        document.getElementById("eventos").addEventListener("mouseout",manejador)
+
+        document.getElementById("parrafo1").addEventListener("click",saludo)
+        document.getElementById("parrafo2").addEventListener("click",saludo)
+
+        function manejador(e){
+        switch(e.type){
+            case "mouseover":
+                this.style.color="red"
+                break;
+            case "mouseout":
+                this.style.color="blue"
+                break;
+            }   
+        }
+
+        function saludo(){
+            if (e.target.id=="parrafo1") alert("Has pulsado parrafo 1")
+            else if (e.target.id=="parrafo2") alert("Has pulsado parrafo 2")
+            alert("Has pulsado" + e.target.id)
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //obtener los dias que han pasado entre hoy y otra fecha fija(7-Mayo-1950 ; 27-Octubre-2023)
+
+      const fechaActual = new Date();
+      const fechaAntigua = new Date("May 7 1990");
+
+      const diferencia = fechaActual.getTime() - fechaAntigua.getTime();
+
+      const anios = diferencia / (1000 * 60 * 60 * 24 * 365);
+      const meses = (anios % 1) * 12;
+      const dias = (meses % 1) * 30;
+      const horas = (dias % 1) * 24;
+      const minutos = (horas % 1) * 60;
+      const segundos = (minutos % 1) * 60;
+
+      console.log(
+        `${anios} : ${meses} : ${dias} : ${horas} : ${minutos} : ${segundos}`
+      );
+    </script>
+  </body>
+</html>

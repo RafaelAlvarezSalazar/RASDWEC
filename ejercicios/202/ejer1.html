@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+    <!-- patternMismatch ; rangeOverflow ; rangeUnderflow ; valueMissing  -->
+  </head>
+  <body>
+    <form action="" method="post" id="formularioCursos">
+      <fieldset>
+        <legend>Datos personales</legend>
+        <div align="center">
+          Introduce tu nombre
+          <input type="text" id="nombre" name="nombre" /><br /><br />
+          Introduce tu NIF <input type="text" id="NIF" name="NIF" />
+          <br /><br />
+          Fecha de Matriculacion
+          <input type="date" id="fecha" name="fechaMatriculacion" /><br /><br />
+          Mensaje <br /><br />
+          <textarea name="texto" id="texto" cols="100" rows="10" maxlength="500" ></textarea>
+          <p id="contador">0/500</p>
+        </div>
+      </fieldset>
+      <br />
+      <div align="center">
+        Elige un color: <br />
+        Rojo <input type="radio" name="color" /> <br />
+        Verde <input type="radio" name="color" /> <br />
+        Azul <input type="radio" name="color" /> <br />
+        <br />
+
+        <label for="cursos">Cursos Académicos:</label>
+        <select id="cursos" name="cursos" onchange="agregarNuevoCurso()">
+            <option value="20-21">20-21</option>
+            <option value="21-22">21-22</option>
+            <option value="22-23">22-23</option>
+            <option value="23-24">23-24</option>
+            <option value="nuevo">Añadir Nuevo Curso Académico</option>
+        </select><br><br>
+        <div id="nuevoCursoInput" style="display: none;">
+            <label for="nuevoCurso">Nuevo Curso Académico:</label>
+            <input type="text" id="nuevoCurso" name="nuevoCurso">
+        </div>
+        <br>
+
+        Selecciona una asignatura
+        <select name="asignatura" id="asignatura">
+          <option>DWES</option>
+          <option>DWEC</option>
+          <option>Despliegue de Aplicaciones</option>
+          <option>FOL</option>
+          <option>Interfaces Web</option>
+        </select>
+        <br/><br/>
+
+        Selecciona los días con disponibilidad <br />
+        <input type="checkbox" class="dias_checkbox" value="Lunes" />Lunes
+        <br />
+        <input type="checkbox" class="dias_checkbox" value="Martes" />Martes
+        <br />
+        <input type="checkbox" class="dias_checkbox"value="Miércoles"/>Miércoles 
+        <br/>
+        <input type="checkbox" class="dias_checkbox" value="Jueves" />Jueves
+        <br />
+        <input type="checkbox" class="dias_checkbox" value="Viernes" />Viernes
+        <br />
+        <input type="checkbox" id="todos_dias" value="todos_dias_checkbox" onclick="seleccionarTodo()"/> Seleccionar todo 
+        <br/><br/>
+
+        Selecciona el dia preferente
+        <select name="asignatura" id="asignatura">
+          <option>Lunes</option>
+          <option>Martes</option>
+          <option>Miércoles</option>
+          <option>Jueves</option>
+          <option>Viernes</option>
+        </select>
+        <br /><br />
+
+        <input type="submit" value="Haz click para enviar informacion" />
+        <input type="reset" value="Comenzar a rellenar de nuevo" />
+        <button type="button">Haz click sobre mi</button>
+
+      </div>
+    </form>
+
+    <script>
+        function agregarNuevoCurso() {
+        var select = document.getElementById("cursos");
+        var nuevoCursoInput = document.getElementById("nuevoCursoInput");
+
+        if (select.value === "nuevo") {
+            nuevoCursoInput.style.display = "block";
+        } else {
+            nuevoCursoInput.style.display = "none";
+        }
+    }
+
+        document.getElementById("formularioCursos").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var select = document.getElementById("cursos");
+        var nuevoCursoInput = document.getElementById("nuevoCurso");
+
+        if (select.value === "nuevo" && nuevoCursoInput.value.trim() !== "") {
+            // Agrega el nuevo curso académico al select como opción
+            var nuevaOpcion = document.createElement("option");
+            nuevaOpcion.value = nuevoCursoInput.value;
+            nuevaOpcion.text = nuevoCursoInput.value;
+            select.add(nuevaOpcion);
+
+            // Selecciona automáticamente el nuevo curso académico
+            select.value = nuevoCursoInput.value;
+
+            // Restablece el campo de nuevo curso
+            nuevoCursoInput.value = "";
+        } else {
+            alert("Curso Académico Seleccionado: " + select.value);
+        }
+    });
+
+        function seleccionarTodo() {
+        var checkboxes = document.getElementsByClassName("dias_checkbox");
+        var selectTodoCheckbox = document.getElementById("todos_dias");
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          checkboxes[i].checked = selectTodoCheckbox.checked;
+        }
+      }
+    
+      const mensaje = document.getElementById('texto');
+      const contador = document.getElementById('contador');
+      mensaje.addEventListener('input', function(e) {
+      const target = e.target;
+      const longitudMax = target.getAttribute('maxlength');
+      const longitudAct = target.value.length;
+      contador.innerHTML = `${longitudAct}/${longitudMax}`;
+      });
+    </script>
+  </body>
+</html>

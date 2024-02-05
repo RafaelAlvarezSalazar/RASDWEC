@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="rombo"></div>
+    <script>
+        var rombo = document.getElementById("rombo")
+        var ancho = Number(prompt("Dame un numero")) 
+        
+        for(i=0;i < ancho ; i++){
+        var asterisco = "";
+        var espacio = "";
+          for(j=0 ; j < ancho - i - 1 ; j++){ 
+            espacio+="&nbsp&nbsp"
+          }
+          for(k = 1 ; k <= 2 * i + 1 ; k++){
+            asterisco+= "*"
+          }
+          rombo.innerHTML=rombo.innerHTML + espacio + asterisco + "<br>"
+        }
+
+        for(i= ancho-2 ; i >= 0 ; i--){ 
+        var asterisco = "";
+        var espacio = "";
+          for(j=0 ; j < ancho - i - 1 ; j++){ 
+            espacio+="&nbsp&nbsp"
+          }
+          for(k = 1 ; k <= 2 * i + 1 ; k++){
+            asterisco+= "*"
+          }
+          rombo.innerHTML=rombo.innerHTML + espacio + asterisco + "<br>"
+        }
+
+
+       
+
+
+    </script>
+</body>
+</html>

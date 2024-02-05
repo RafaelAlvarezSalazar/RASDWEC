@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="mailto : ralvarez9@educa.madrid.org">
+
+        Nombre: <input type="text" ><br>
+
+        Apellidos: <input type="text"><br>
+        
+        DNI: <input type="text"><br>
+        
+        Sexo : <br>
+        <input type="radio" name="Sexo" value="hombre" checked>Hombre<br>
+        <input type="radio" name="Sexo" value="Mujer">Mujer<br>
+        
+        Incluir mi foto: <input type="file"><br>
+        <input type="checkbox" checked>Enviar publicidad <br>
+
+        
+        <input type="submit" name="enviar" value="Guardar cambios" onclick="confirmar()">
+        <input type="reset" name="limpiar" value="Borrar los datos introducidos" onclick="foco()">
+
+        <script>
+            window.addEventListener("load" ,)
+            function confirmar() {
+              
+                if (confirm("¿Seguro que desea enviar el formulario?")) {
+                return true;
+                
+                } else {
+                return false; }
+               
+                }
+            
+            function foco(){
+                document.querySelector("input").focus();
+            }
+
+            
+        </script>
+</body>
+</html>

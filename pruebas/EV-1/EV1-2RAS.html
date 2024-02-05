@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="piramideInvertida" align="center"></div>
+    <script>
+      var rombo = document.getElementById("piramideInvertida");//HTML
+
+      var ancho = Number(prompt("Dame un numero"));
+
+      while (isNaN(ancho) || ancho == null || ancho == "") {//Si el numero no es un numero o es un caracter vacio salta error 
+        alert("Introduzca una numero valido");
+        ancho = ancho = Number(prompt("Dame un numero"));//vuelve a pedirlo
+      }
+      for (var i = ancho; i >= 0; i--) {//se inicializa la variable i con el valor del usuario
+        var numero = "";
+        var espacio = "";
+        for (j = 0; j < ancho - i - 1; j++) { //espacios
+          espacio += "&nbsp&nbsp";
+        }
+        for (k = 2; k <= 1 * i + 1; k++) {//imprime los numeros tantas veces como la variable ancho por que la variable i es el ancho que da el usuario   
+                                          
+        numero += i;//se imprime i ya que es el numero que va aumentando hasta el numero del usuario                                              
+        }
+        piramideInvertida.innerHTML = piramideInvertida.innerHTML + espacio + numero + "<br>";
+      }
+    </script>
+  </body>
+</html>
