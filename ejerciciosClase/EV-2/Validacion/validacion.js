@@ -66,3 +66,27 @@ document.getElementById("enviar").addEventListener("click", validar , false)
         elemento.className = "error"
         elemento.focus()
     }
+// FUNCION PARA VALIDAR FORMULARIO
+function validarFormulario() {
+    var formulario = document.getElementById("formularioCursos");
+    var inputs = formulario.querySelectorAll("input, textarea, select");
+
+    for (var i = 0; i < inputs.length; i++) {
+        if (!inputs[i].checkValidity()) {
+            mostrarError(inputs[i].validationMessage);
+            return false;
+        }
+    }
+
+    if (!validarSelectDias()) {
+        mostrarError("Selecciona al menos dos días de disponibilidad.");
+        return false;
+    }
+
+    return true;
+}
+
+function mostrarError(mensaje) {
+    var mensajeError = document.getElementById("mensajeError");
+    mensajeError.textContent = mensaje;
+}

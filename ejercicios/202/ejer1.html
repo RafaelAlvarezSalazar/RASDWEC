@@ -11,40 +11,56 @@
       <fieldset>
         <legend>Datos personales</legend>
         <div align="center">
-          Introduce tu nombre
-          <input type="text" id="nombre" name="nombre" /><br /><br />
-          Introduce tu NIF <input type="text" id="NIF" name="NIF" />
+          <label for="nombre"> Introduce tu nombre: </label>
+          <input type="text" id="nombre" name="nombre" required/> <br /><br />
+
+          <label for="NIF">Introduce tu NIF</label>
+          <input type="text" id="NIF" name="NIF" pattern="[0-9]{8}[A-Z]" required/>
           <br /><br />
-          Fecha de Matriculacion
-          <input type="date" id="fecha" name="fechaMatriculacion" /><br /><br />
-          Mensaje <br /><br />
-          <textarea name="texto" id="texto" cols="100" rows="10" maxlength="500" ></textarea>
+
+          <label for="fechaMatriculacion">Fecha de Matriculacion</label>
+          <input type="date" id="fecha" name="fechaMatriculacion" required/>
+          <br /><br />
+
+          <label for="mensaje">Mensaje</label> <br /><br />
+          <textarea
+            name="texto"
+            id="texto"
+            cols="100"
+            rows="10"
+            minlength="2"
+            maxlength="500"
+            required
+          ></textarea>
           <p id="contador">0/500</p>
         </div>
       </fieldset>
-      <br />
+      <br/>
+
       <div align="center">
-        Elige un color: <br />
-        Rojo <input type="radio" name="color" /> <br />
-        Verde <input type="radio" name="color" /> <br />
-        Azul <input type="radio" name="color" /> <br />
-        <br />
+        <label for="color">Elige un color:</label> <br />
+        Rojo <input type="radio" name="color" value="rojo" /> <br />
+        Verde <input type="radio" name="color" value="verde" /> <br />
+        Azul <input type="radio" name="color" value="azul" checked /> <br />
+        <br/>
 
         <label for="cursos">Cursos Académicos:</label>
         <select id="cursos" name="cursos" onchange="agregarNuevoCurso()">
-            <option value="20-21">20-21</option>
-            <option value="21-22">21-22</option>
-            <option value="22-23">22-23</option>
-            <option value="23-24">23-24</option>
-            <option value="nuevo">Añadir Nuevo Curso Académico</option>
-        </select><br><br>
-        <div id="nuevoCursoInput" style="display: none;">
-            <label for="nuevoCurso">Nuevo Curso Académico:</label>
-            <input type="text" id="nuevoCurso" name="nuevoCurso">
+          <option value="20-21">20-21</option>
+          <option value="21-22">21-22</option>
+          <option value="22-23">22-23</option>
+          <option value="23-24">23-24</option>
+          <option value="nuevo">Añadir Nuevo Curso Académico</option>
+        </select>
+        <br/><br/>
+        <div id="nuevoCursoInput" style="display: none">
+          <label for="nuevoCurso">Nuevo Curso Académico:</label>
+          <input type="text" id="nuevoCurso" name="nuevoCurso" />
+          <button type="button" id="agregar">Agregar</button>
         </div>
-        <br>
+        <br />
 
-        Selecciona una asignatura
+        <label for="asignaturas">Selecciona una asignatura</label>
         <select name="asignatura" id="asignatura">
           <option>DWES</option>
           <option>DWEC</option>
@@ -52,25 +68,28 @@
           <option>FOL</option>
           <option>Interfaces Web</option>
         </select>
-        <br/><br/>
+        <br /><br />
 
-        Selecciona los días con disponibilidad <br />
+        <label for="disponibilidad">
+          Selecciona los días con disponibilidad
+        </label>
+        <br />
         <input type="checkbox" class="dias_checkbox" value="Lunes" />Lunes
         <br />
         <input type="checkbox" class="dias_checkbox" value="Martes" />Martes
         <br />
-        <input type="checkbox" class="dias_checkbox"value="Miércoles"/>Miércoles 
-        <br/>
+        <input type="checkbox" class="dias_checkbox" value="Miércoles"/>Miércoles
+        <br />
         <input type="checkbox" class="dias_checkbox" value="Jueves" />Jueves
         <br />
         <input type="checkbox" class="dias_checkbox" value="Viernes" />Viernes
         <br />
-        <input type="checkbox" id="todos_dias" value="todos_dias_checkbox" onclick="seleccionarTodo()"/> Seleccionar todo 
+        <input type="checkbox" id="todos_dias" value="todos_dias_checkbox" onclick="seleccionarTodo()"/>Seleccionar todo 
         <br/><br/>
 
-        Selecciona el dia preferente
+        <label for="diaPreferente">Selecciona el dia preferente</label>
         <select name="asignatura" id="asignatura">
-          <option>Lunes</option>
+          <option selected>Lunes</option>
           <option>Martes</option>
           <option>Miércoles</option>
           <option>Jueves</option>
@@ -78,32 +97,34 @@
         </select>
         <br /><br />
 
-        <input type="submit" value="Haz click para enviar informacion" />
+        <input type="submit" id="enviar" value="Haz click para enviar informacion"/>
         <input type="reset" value="Comenzar a rellenar de nuevo" />
-        <button type="button">Haz click sobre mi</button>
+        <button type="button" onclick="irAGoogle()">Haz click sobre mi</button>
 
+        <p id="mensajeError"></p>
       </div>
     </form>
 
     <script>
-        function agregarNuevoCurso() {
+
+      // AQUI EMPIEZA FUNCION DE AGREGAR CURSO
+      function agregarNuevoCurso() {
         var select = document.getElementById("cursos");
         var nuevoCursoInput = document.getElementById("nuevoCursoInput");
 
         if (select.value === "nuevo") {
-            nuevoCursoInput.style.display = "block";
+          nuevoCursoInput.style.display = "block";
         } else {
-            nuevoCursoInput.style.display = "none";
+          nuevoCursoInput.style.display = "none";
         }
-    }
+      }
+      document.getElementById("agregar").addEventListener("click", function (event) {
+          event.preventDefault();
 
-        document.getElementById("formularioCursos").addEventListener("submit", function(event) {
-        event.preventDefault();
+          var select = document.getElementById("cursos");
+          var nuevoCursoInput = document.getElementById("nuevoCurso");
 
-        var select = document.getElementById("cursos");
-        var nuevoCursoInput = document.getElementById("nuevoCurso");
-
-        if (select.value === "nuevo" && nuevoCursoInput.value.trim() !== "") {
+          if (select.value === "nuevo" && nuevoCursoInput.value.trim() !== "") {
             // Agrega el nuevo curso académico al select como opción
             var nuevaOpcion = document.createElement("option");
             nuevaOpcion.value = nuevoCursoInput.value;
@@ -115,28 +136,125 @@
 
             // Restablece el campo de nuevo curso
             nuevoCursoInput.value = "";
-        } else {
-            alert("Curso Académico Seleccionado: " + select.value);
-        }
-    });
+          }
+        }); // AQUI SE ACABA AGREGAR NUEVO CURSO AL SELECT
 
-        function seleccionarTodo() {
+      //FUNCION SELECCIONAR TODO
+      function seleccionarTodo() {
         var checkboxes = document.getElementsByClassName("dias_checkbox");
         var selectTodoCheckbox = document.getElementById("todos_dias");
 
         for (var i = 0; i < checkboxes.length; i++) {
           checkboxes[i].checked = selectTodoCheckbox.checked;
         }
+      } // AQUI SE ACABA FUNCION DE SELECCIONAR TODO
+
+      //CONTADOR DE LETRAS DE LA CAJA TEXTAREA
+      const mensaje = document.getElementById("texto");
+      const contador = document.getElementById("contador");
+      mensaje.addEventListener("input", function (e) {
+        const target = e.target;
+        const longitudMax = target.getAttribute("maxlength");
+        const longitudAct = target.value.length;
+        contador.innerHTML = `${longitudAct}/${longitudMax}`;
+      }); //FIN DE CONTADOR DE LETRAS DE LA CAJA DE TEXTAREA
+
+      //VALIDACION FORMULARIO ⤵️
+      // USAR --> patternMismatch ; rangeOverflow ; rangeUnderflow ; valueMissing
+      window.onload = iniciar;
+      function iniciar(){
+      document.getElementById("enviar").addEventListener("click", validar , false)
+      } 
+
+      //VALIDAR NOMBRE (CAMPO NO VACIO)
+      function validarNombre() {
+        var elemento = document.getElementById("nombre");
+        if (!elemento.checkValidity()) {
+          if (elemento.validity.valueMissing) {
+            alert("No puede dejar el campo nombre vacio");
+          }
+          return false;
+        }
+        return true;
       }
-    
-      const mensaje = document.getElementById('texto');
-      const contador = document.getElementById('contador');
-      mensaje.addEventListener('input', function(e) {
-      const target = e.target;
-      const longitudMax = target.getAttribute('maxlength');
-      const longitudAct = target.value.length;
-      contador.innerHTML = `${longitudAct}/${longitudMax}`;
-      });
+
+      //VALIDAR NIF (CAMPO NO VACIO Y 8 NUMEROS 1 LETRA)
+      function validarNIF() {
+        var elemento = document.getElementById("NIF");
+        if (!elemento.checkValidity()) {
+          if (elemento.validity.valueMissing) {
+            alert("No puede dejar el campo NIF vacio");
+          }
+          if (elemento.validity.patternMismatch) {
+            alert("Debe contener al menos 8 numeros y una letra");
+          }
+          return false;
+        }
+        return true;
+      }
+
+      //VALIDAR FECHA (CAMPO NO VACIO)
+      function validarFecha() {
+        var elemento = document.getElementById("fecha");
+        if (!elemento.checkValidity()) {
+          if (elemento.validity.valueMissing) {
+            alert("No puede dejar el campo Fecha de Matriculacion vacio");
+          }
+          return false;
+        }
+        return true;
+      }
+
+      //VALIDAR MENSAJE(CAMPO NO VACIO Y MINIMO 2 CARACTERES MAX 500)
+      function validarMensaje() {
+        var elemento = document.getElementById("texto");
+        if (!elemento.checkValidity()) {
+          if (elemento.validity.valueMissing) {
+            alert("No puede dejar el campo mensaje vacio");
+          }
+          if (elemento.validity.tooShort) {
+            alert("El mensaje debe tener al menos 2 caracteres");
+          }
+          return false;
+        }
+        return true;
+      }
+
+      //VALIDAR SELECT DIAS (AL MENOS 2 DIAS SELECIONADOS)
+      function validarSelectDias() {
+        var checkboxes = document.getElementsByClassName("dias_checkbox");
+        var contador = 0;
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            contador++;
+          }
+        }
+        if (contador < 2) {
+          alert("Selecciona al menos dos días de disponibilidad.");
+          return false;
+        }
+        return true;
+      }
+
+      //FUNCION PARA IR A GOOGLE
+      function irAGoogle() {
+        window.location.href = "https://www.google.com";
+      }
+
+      //VALIDAR TODO 
+      function validar(e) {
+        if (validarNombre() && validarNIF() && validarFecha() && validarMensaje() && validarSelectDias() ) {
+          return true;
+        } else {
+          e.preventDefault();
+          return false;
+        }
+      }
+
+      function error(elemento, mensaje) {
+        alert(mensaje);
+        elemento.focus();
+      }
     </script>
   </body>
 </html>
