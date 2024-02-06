@@ -7,28 +7,35 @@
     <!-- patternMismatch ; rangeOverflow ; rangeUnderflow ; valueMissing  -->
   </head>
   <body>
-    <form action="" method="post" id="formularioCursos">
+
+    <form action= "" method="post" id="formularioCursos">
       <fieldset>
         <legend>Datos personales</legend>
         <div align="center">
-          Introduce tu nombre
-          <input type="text" id="nombre" name="nombre" /><br /><br />
-          Introduce tu NIF <input type="text" id="NIF" name="NIF" />
-          <br /><br />
-          Fecha de Matriculacion
-          <input type="date" id="fecha" name="fechaMatriculacion" /><br /><br />
-          Mensaje <br /><br />
-          <textarea name="texto" id="texto" cols="100" rows="10" maxlength="500" ></textarea>
+
+          <label for="nombre"> Introduce tu nombre: </label>
+          <input type="text" id="nombre" name="nombre"/>  <br/><br/>
+
+          <label for="NIF">Introduce tu NIF</label>
+          <input type="text" id="NIF" name = "NIF" pattern="[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]" required />  <br/><br/>
+          
+          <label for = "fechaMatriculacion">Fecha de Matriculacion</label>
+          <input type = "date" id="fecha" name = "fechaMatriculacion"/>  <br/><br/>
+
+          <label for="mensaje">Mensaje</label> <br /><br />
+          <textarea name="texto" id="texto" cols="100" rows="10" minlength="2" maxlength="500" required></textarea>
           <p id="contador">0/500</p>
+
         </div>
-      </fieldset>
-      <br />
+      </fieldset> <br/>
+      
       <div align="center">
-        Elige un color: <br />
-        Rojo <input type="radio" name="color" /> <br />
-        Verde <input type="radio" name="color" /> <br />
-        Azul <input type="radio" name="color" /> <br />
-        <br />
+
+        <label for="color">Elige un color:</label> <br/>
+          Rojo <input type="radio" name="color" value="rojo" />  <br/>
+          Verde <input type="radio" name="color" value="verde" /> <br/>
+          Azul <input type="radio" name="color" value="azul" checked />  <br/>
+        <br/>
 
         <label for="cursos">Cursos Académicos:</label>
         <select id="cursos" name="cursos" onchange="agregarNuevoCurso()">
@@ -37,14 +44,15 @@
             <option value="22-23">22-23</option>
             <option value="23-24">23-24</option>
             <option value="nuevo">Añadir Nuevo Curso Académico</option>
-        </select><br><br>
+        </select> <br><br>
         <div id="nuevoCursoInput" style="display: none;">
             <label for="nuevoCurso">Nuevo Curso Académico:</label>
             <input type="text" id="nuevoCurso" name="nuevoCurso">
+            <button type="button" id="agregar">Agregar</button>
         </div>
         <br>
 
-        Selecciona una asignatura
+        <label for="asignaturas">Selecciona una asignatura</label>
         <select name="asignatura" id="asignatura">
           <option>DWES</option>
           <option>DWEC</option>
@@ -54,38 +62,41 @@
         </select>
         <br/><br/>
 
-        Selecciona los días con disponibilidad <br />
-        <input type="checkbox" class="dias_checkbox" value="Lunes" />Lunes
-        <br />
-        <input type="checkbox" class="dias_checkbox" value="Martes" />Martes
-        <br />
-        <input type="checkbox" class="dias_checkbox"value="Miércoles"/>Miércoles 
-        <br/>
-        <input type="checkbox" class="dias_checkbox" value="Jueves" />Jueves
-        <br />
-        <input type="checkbox" class="dias_checkbox" value="Viernes" />Viernes
-        <br />
-        <input type="checkbox" id="todos_dias" value="todos_dias_checkbox" onclick="seleccionarTodo()"/> Seleccionar todo 
-        <br/><br/>
+        <label for="disponibilidad"> Selecciona los días con disponibilidad </label> <br/>
+          <input type="checkbox" class="dias_checkbox" value="Lunes" />Lunes
+          <br />
+          <input type="checkbox" class="dias_checkbox" value="Martes" />Martes
+          <br />
+          <input type="checkbox" class="dias_checkbox"value="Miércoles"/>Miércoles 
+          <br/>
+          <input type="checkbox" class="dias_checkbox" value="Jueves" />Jueves
+          <br />
+          <input type="checkbox" class="dias_checkbox" value="Viernes" />Viernes
+          <br />
+          <input type="checkbox" id="todos_dias" value="todos_dias_checkbox" onclick="seleccionarTodo()"/> Seleccionar todo 
+          <br/><br/>
 
-        Selecciona el dia preferente
+        <label for="diaPreferente">Selecciona el dia preferente</label>
         <select name="asignatura" id="asignatura">
-          <option>Lunes</option>
+          <option selected>Lunes</option>
           <option>Martes</option>
           <option>Miércoles</option>
           <option>Jueves</option>
           <option>Viernes</option>
         </select>
-        <br /><br />
+        <br/><br/>
 
-        <input type="submit" value="Haz click para enviar informacion" />
+        <input type="submit" id="enviar" value="Haz click para enviar informacion" />
         <input type="reset" value="Comenzar a rellenar de nuevo" />
-        <button type="button">Haz click sobre mi</button>
+        <button type="button" onclick="irAGoogle()">Haz click sobre mi</button>
 
+        <p id="mensajeError"></p>
       </div>
     </form>
 
     <script>
+
+        // AQUI EMPIEZA FUNCION DE AGREGAR CURSO
         function agregarNuevoCurso() {
         var select = document.getElementById("cursos");
         var nuevoCursoInput = document.getElementById("nuevoCursoInput");
@@ -97,7 +108,7 @@
         }
     }
 
-        document.getElementById("formularioCursos").addEventListener("submit", function(event) {
+        document.getElementById("agregar").addEventListener("click", function(event) {
         event.preventDefault();
 
         var select = document.getElementById("cursos");
@@ -115,11 +126,11 @@
 
             // Restablece el campo de nuevo curso
             nuevoCursoInput.value = "";
-        } else {
-            alert("Curso Académico Seleccionado: " + select.value);
         }
-    });
+    }); // AQUI SE ACABA AGREGAR NUEVO CURSO AL SELECT 
 
+        
+        //FUNCION SELECCIONAR TODO
         function seleccionarTodo() {
         var checkboxes = document.getElementsByClassName("dias_checkbox");
         var selectTodoCheckbox = document.getElementById("todos_dias");
@@ -127,8 +138,9 @@
         for (var i = 0; i < checkboxes.length; i++) {
           checkboxes[i].checked = selectTodoCheckbox.checked;
         }
-      }
+      }// AQUI SE ACABA FUNCION DE SELECCIONAR TODO
     
+      //CONTADOR DE LETRAS DE LA CAJA TEXTAREA 
       const mensaje = document.getElementById('texto');
       const contador = document.getElementById('contador');
       mensaje.addEventListener('input', function(e) {
@@ -136,7 +148,103 @@
       const longitudMax = target.getAttribute('maxlength');
       const longitudAct = target.value.length;
       contador.innerHTML = `${longitudAct}/${longitudMax}`;
-      });
+      }); //FIN DE CONTADOR DE LETRAS DE LA CAJA DE TEXTAREA
+
+      //FUNCION PARA VALIDAR FORMULARIO 
+      // USAR --> patternMismatch ; rangeOverflow ; rangeUnderflow ; valueMissing
+      window.onload = iniciar;
+      function iniciar(){
+      document.getElementById("enviar").addEventListener("click", validar , false)
+      } 
+
+      function validarNombre(){
+        var elemento = document.getElementById("nombre")
+        if(!elemento.checkValidity()){
+            if(elemento.validity.valueMissing){
+                error2=(elemento, "No puede dejar el campo nombre vacio")
+            }
+            return false
+        }
+        return true
+     }
+
+      function validarNIF(){
+        var elemento = document.getElementById("NIF")
+        if(!elemento.checkValidity()){
+            if(elemento.validity.valueMissing){
+                error2=(elemento, "No puede dejar el campo NIF vacio")
+            }
+            if(elemento.validity.patternMismatch){
+                error2=(elemento, "Debe contener al menos 8 numeros y una letra")
+            }
+            return false
+         }
+         return true
+      }
+
+      function validarFecha(){
+        var elemento = document.getElementById("fecha")
+        if(!elemento.checkValidity()){
+            if(elemento.validity.valueMissing){
+                error2=(elemento, "No puede dejar el campo Fecha de Matriculacion vacio")
+            }
+            return false
+         }
+         return true
+      }
+
+      function validarMensaje(){
+        var elemento = document.getElementById("texto")
+        if(!elemento.checkValidity()){
+            if(elemento.validity.valueMissing){
+                error2=(elemento, "No puede dejar el campo mensaje vacio")
+            }
+            if (elemento.validity.rangeOverflow) {
+                error2=("entre 2 y 500 caracteres");
+            }
+            if (elemento.validity.rangeUnderflow) {
+                error2=("entre 2 y 500 caracteres");
+            }
+            return false
+         }
+         return true
+      }
+
+      function validarSelectDias() {
+        var checkboxes = document.getElementsByClassName("dias_checkbox");
+        var contador = 0;
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            contador++;
+         }
+        }
+        if (contador < 2) {
+          alert("Selecciona al menos dos días de disponibilidad.");
+          return false;
+        }
+        return true;
+      }
+
+      function irAGoogle() {
+            window.location.href = "https://www.google.com";
+        }
+
+
+      function validar(e){
+        if(validarNombre() && validarNIF() && validarFecha() && validarMensaje() && validarSelectDias()  ){
+            return true
+        }else{
+            e.preventDefault() 
+            return false
+        }
+    }
+
+
+    function error(elemento){
+        document.getElementById("mensajeError").innerHTML=elemento.validationMessage
+        elemento.focus()
+    }
     </script>
+
   </body>
 </html>
