@@ -154,7 +154,11 @@
     var elemento = document.getElementById("nombre")
     if(!elemento.checkValidity()){
         if(elemento.validity.valueMissing){
+<<<<<<< HEAD
             alert("No puede dejar el campo nombre vacío");
+=======
+            error(elemento, "No puede dejar el campo nombre vacío");
+>>>>>>> 65e4598960ad5362123579d3416495e73f5ebc22
         }
         return false
     }
@@ -165,10 +169,17 @@
     var elemento = document.getElementById("NIF")
     if(!elemento.checkValidity()){
         if(elemento.validity.valueMissing){
+<<<<<<< HEAD
             alert("No puede dejar el campo NIF vacío");
         }
         if(elemento.validity.patternMismatch){
             alert("Debe contener al menos 8 números y una letra");
+=======
+            error(elemento, "No puede dejar el campo NIF vacío");
+        }
+        if(elemento.validity.patternMismatch){
+            error(elemento, "Debe contener al menos 8 números y una letra");
+>>>>>>> 65e4598960ad5362123579d3416495e73f5ebc22
         }
         return false
      }
@@ -179,7 +190,11 @@
     var elemento = document.getElementById("fecha")
     if(!elemento.checkValidity()){
         if(elemento.validity.valueMissing){
+<<<<<<< HEAD
             alert("No puede dejar el campo Fecha de Matriculación vacío");
+=======
+            error(elemento, "No puede dejar el campo Fecha de Matriculación vacío");
+>>>>>>> 65e4598960ad5362123579d3416495e73f5ebc22
         }
         return false
      }
@@ -190,6 +205,7 @@
     var elemento = document.getElementById("texto")
     if(!elemento.checkValidity()){
         if(elemento.validity.valueMissing){
+<<<<<<< HEAD
             alert("No puede dejar el campo mensaje vacío");
         }
         if (elemento.validity.tooLong) {
@@ -197,6 +213,15 @@
         }
         if (elemento.validity.tooShort) {
             alert("El mensaje debe tener al menos 2 caracteres");
+=======
+            error(elemento, "No puede dejar el campo mensaje vacío");
+        }
+        if (elemento.validity.tooLong) {
+            error(elemento, "El mensaje no puede tener más de 500 caracteres");
+        }
+        if (elemento.validity.tooShort) {
+            error(elemento, "El mensaje debe tener al menos 2 caracteres");
+>>>>>>> 65e4598960ad5362123579d3416495e73f5ebc22
         }
         return false
      }
@@ -234,7 +259,15 @@
 
 
 function error(elemento, mensaje){
+<<<<<<< HEAD
     alert(mensaje);
+=======
+    var errorSpan = document.createElement('span');
+    errorSpan.classList.add('error-message');
+    errorSpan.textContent = mensaje;
+    var parent = elemento.parentElement;
+    parent.appendChild(errorSpan);
+>>>>>>> 65e4598960ad5362123579d3416495e73f5ebc22
     elemento.focus();
 }
 </script>
