@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="formulario-container">
+        <h1>Buscaminas</h1>
+        <div>
+            <label for="input-filas">Filas:</label>
+            <input type="number" id="input-filas"><br><br>
+            <label for="input-columnas">Columnas:</label>
+            <input type="number" id="input-columnas"><br><br>
+            <label for="input-columnas">Dificultad (% de minas segun tamaño):</label>
+            <input id="dificultad" type="range" min="10" max="40" step="1" value="0"><span id="cajaNumeral">10%</span> <br><br>
+            <button id="boton">Generar Tablero</button><br><br>
+           
+        </div>
+    </div>
+
+    <div id="tablero-container" style="display: none;">
+        <h1>Buscaminas</h1> 
+        <span>Minas Restantes: <span id="contador-minas">0</span></span>
+        <!-- Aquí se generará el tablero -->
+        <div id="contenedor-juego"></div>
+    </div>
+
+    <div id="popup-container" class="popup-container">
+        <div id="popup" class="popup">
+            <h2>¡Has perdido!</h2>
+            <button id="reiniciar-btn">Reiniciar</button>
+        </div>
+    </div>
+
+    <!-- Ejemplo de imagen PNG de la bandera -->
+    <img src="bandera.png" id="bandera" style="display: none;">
+    
+    <script src="app.js"></script>
+</body>
+</html>
