@@ -1,22 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fecht</title>
-</head>
-<body>
-    <div id="contenedorApi"></div>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch</title>
+    <link rel="stylesheet" href="fetch.css" type="text/css" />
+  </head>
+  <body>
     <script>
-        
-               fetch("https://randomuser.me/api")
-               .then (response => response.json())
-               .then(datos=> {
-                console.log(datos)
-                document.getElementById("contenedorApi").innerHTML=` 
-                img src= "${datos.results[0].pictures.medium}" />
-                <p>Nombre: ${datos.results[0].name.first}</p>`
-               })
+      async function randomUserAwait() {
+        try {
+          const req = await fetch("https://randomuser.me/api/?results=10");
+          const res = await req.json();
+
+          res.results.forEach((user) => createUserCard(user));
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
+
+      function createUserCard(user) {
+        const userCard = document.createElement("article");
+        userCard.classList.add("userCard");
+
+        const userPicture = document.createElement("figure");
+        const userImg = document.createElement("img");
+        userImg.src = user.picture.large;
+
+        const { title, first, last } = user.name;
+        const userName = document.createElement("figcaption");
+        userName.textContent = `${title} ${first} ${last}`;
+
+        userPicture.append(userImg);
+        userPicture.append(userName);
+
+        const userTLF = document.createElement("a");
+
+        userCard.append(userPicture);
+        document.body.append(userCard);
+      }
+
+      randomUserAwait();
     </script>
-</body>
+  </body>
 </html>
