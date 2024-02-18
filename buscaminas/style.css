@@ -102,3 +102,33 @@ body {
     opacity: 1; /* Hacer visible */
     pointer-events: auto; /* Permitir eventos del puntero */
 }
+
+.popup-container2 {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-items: flex-start; /* Alinea el mensaje emergente en la parte superior */
+    justify-content: center;
+    position: fixed;
+    opacity: 0; /* Inicialmente invisible */
+    pointer-events: none; /* Los eventos del puntero no se activan inicialmente */
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999; /* Ajusta el valor según sea necesario */
+}
+
+.popup2 {
+    background-color: #fff;
+    width: 600px;
+    max-width: 100%;
+    padding: 30px 50px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.popup-container2.show2 {
+    opacity: 1; /* Hacer visible */
+    pointer-events: auto; /* Permitir eventos del puntero */
+}

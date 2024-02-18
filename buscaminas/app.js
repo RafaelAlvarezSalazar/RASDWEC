@@ -104,19 +104,29 @@ function colocarBombasTableroJS(valorFilas, valorColumnas, cantidadBombas) {
     }
 }
 
-function mostrarMensajePerdido() {
-        let elemento = document.getElementById("popup-container");
-        elemento.classList.add('show'); // Agregar la clase 'show' para hacer visible el popup
-    }
-    document.getElementById("reiniciar-btn").addEventListener("click", function() {
-        // Evento reiniciar juego
-        reiniciarJuego();
-    });
+function mostrarMensajeGanado() {
+    let elemento = document.getElementById("popup-container2");
+    elemento.classList.add('show2'); // Agregar la clase 'show' para hacer visible el popup
+}
 
-    function reiniciarJuego() {
-        location.reload();
-    }
-    
+function mostrarMensajePerdido() {
+    let elemento = document.getElementById("popup-container");
+    elemento.classList.add('show'); // Agregar la clase 'show' para hacer visible el popup
+}
+
+document.getElementById("reiniciar-btn").addEventListener("click", function() {
+    // Evento reiniciar juego
+    reiniciarJuego();
+});
+document.getElementById("reiniciar2-btn").addEventListener("click", function() {
+    // Evento reiniciar juego
+    reiniciarJuego();
+});
+
+function reiniciarJuego() {
+    location.reload();
+}
+
 // Función para descubrir una casilla
 function descubrirCasilla(casilla, valorFilas, valorColumnas) {
     // Verificar si la casilla contiene una bomba
@@ -162,6 +172,29 @@ function descubrirCasilla(casilla, valorFilas, valorColumnas) {
 
         // Marcar la casilla como descubierta
         casilla.classList.add('descubierto');
+
+        // Verificar si todas las casillas que no son bombas han sido descubiertas
+        
+        let casillasNoBombas = [];
+        let casillas = document.querySelectorAll('.casilla');
+
+        casillas.forEach(casilla => {
+            if (!casilla.classList.contains('bomba')) {
+                casillasNoBombas.push(casilla);
+            }
+        });
+
+        let todasDescubiertas = true;
+        casillasNoBombas.forEach(casillaNoBomba => {
+            if (!casillaNoBomba.classList.contains('descubierto')) {
+                todasDescubiertas = false;
+            }
+        });
+
+        // Si todas las casillas que no son bombas han sido descubiertas, mostrar mensaje de ganado
+        if (todasDescubiertas) {
+            mostrarMensajeGanado();
+        }
     }
 }
 
