@@ -1,0 +1,61 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EV2A-1IBG</title>
+  </head>
+  <body>
+    <script>
+      class Animal {
+        constructor(nombre, edad, patas, especie, estado) {
+          this.nombre = nombre
+          this.edad = edad
+          this.patas = patas
+          this.especie = especie
+          this.estado = estado
+        }
+        introduce() {
+          return `Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.`
+        }
+      }
+
+      class Tiburon extends Animal {
+        constructor(nombre, edad, estado) {
+          super(nombre, edad, 0, 'Escualos', estado)
+        }
+      }
+
+      class Gato extends Animal {
+        constructor(nombre, edad, estado) {
+          super(nombre, edad, 4, 'Felinos', estado)
+        }
+        introduce() {
+          return `${super.introduce()}  ¡Miau, miau!`
+        }
+      }
+
+      class Perro extends Animal {
+        constructor(nombre, edad, estado, dueno) {
+          super(nombre, edad, 4, 'Canidos', estado)
+          this.dueno = dueno
+        }
+        introduce() {
+          return super.introduce()
+        }
+        saludaDueno() {
+          return `Hola ${this.dueno}`
+        }
+      }
+
+      const chum = new Tiburon('Chum', 5, 'hambriento')
+      const silvestre = new Gato('Silvestre', 3, 'jugueton')
+      const cane = new Perro('Cane', 2, 'feliz', 'Pepe')
+
+      // Muestra por consola sus métodos correspondientes
+      console.log(chum.introduce())
+      console.log(silvestre.introduce())
+      console.log(cane.introduce())
+      console.log(cane.saludaDueno())
+    </script>
+  </body>
+</html>
