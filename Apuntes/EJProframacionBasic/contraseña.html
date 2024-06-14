@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformación de Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        label, input {
+            margin-top: 10px;
+            display: block;
+        }
+        pre {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transformación de Password</h1>
+    <label for="userInput">Ingresa una palabra o frase:</label>
+    <input type="text" id="userInput" placeholder="Escribe aquí..." onkeyup="transformarPassword()">
+    <pre id="output"></pre>
+
+    <script type="text/javascript">
+        // Función que transforma la cadena de acuerdo a las reglas especificadas
+        function password(str) {
+            return str
+                .toLowerCase()      // Convertir a minúsculas
+                .replace(/ /g, "")  // Eliminar espacios
+                .replace(/a/g, "4") // Reemplazar 'a' por '4'
+                .replace(/e/g, "3") // Reemplazar 'e' por '3'
+                .replace(/i/g, "1") // Reemplazar 'i' por '1'
+                .replace(/o/g, "0"); // Reemplazar 'o' por '0'
+        }
+
+        // Función para transformar el texto ingresado por el usuario
+        function transformarPassword() {
+            var input = document.getElementById("userInput").value;
+            var output = password(input);
+            document.getElementById("output").innerText = output;
+        }
+    </script>
+</body>
+</html>

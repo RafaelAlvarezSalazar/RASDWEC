@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function esPalindromo(frase) {
+    // Eliminar espacios y caracteres especiales, y convertir a minúsculas
+    const fraseLimpia = frase.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+    
+    // Invertir la frase limpia
+    const fraseInvertida = fraseLimpia.split('').reverse().join('');
+    
+    // Comparar la frase limpia con la frase invertida
+    return fraseLimpia === fraseInvertida;
+}
+
+// Solicitar una frase al usuario
+const frase = prompt("Introduce una frase:");
+
+// Verificar si la frase es un palíndromo y mostrar el resultado
+if (esPalindromo(frase)) {
+    console.log("La frase es un palíndromo");
+} else {
+    console.log("La frase no es un palíndromo");
+}
+
+    </script>
+</body>
+</html>

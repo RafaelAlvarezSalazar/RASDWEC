@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Definición de la clase base Animal
+class Animal {
+    constructor(nombre, edad, patas, especie, estado) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.patas = patas;
+        this.especie = especie;
+        this.estado = estado;
+    }
+
+    introduce() {
+        return `Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.`;
+    }
+}
+
+// Definición de la clase Tiburon que hereda de Animal
+class Tiburon extends Animal {
+    constructor(nombre, edad, estado) {
+        super(nombre, edad, 0, 'Escualos', estado); // Los tiburones no tienen patas en este contexto
+    }
+}
+
+// Definición de la clase Gato que hereda de Animal
+class Gato extends Animal {
+    constructor(nombre, edad, estado) {
+        super(nombre, edad, 4, 'Felinos', estado); // Los gatos tienen 4 patas
+    }
+
+    introduce() {
+        return `Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.  ¡Miau, miau!`;
+    }
+}
+
+// Definición de la clase Perro que hereda de Animal
+class Perro extends Animal {
+    constructor(nombre, edad, estado, dueño) {
+        super(nombre, edad, 4, 'Canidos', estado); // Los perros tienen 4 patas
+        this.dueño = dueño;
+    }
+
+    introduce() {
+        return `Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.`;
+    }
+
+    saludaDueño() {
+        return `Hola ${this.dueño}`;
+    }
+}
+
+// Ejemplos de uso
+
+// Un tiburón llamado Chum de 5 años y estado hambriento
+let chum = new Tiburon('Chum', 5, 'hambriento');
+console.log(chum.introduce());
+
+// Un gato llamado Silvestre de 3 años y estado juguetón
+let silvestre = new Gato('Silvestre', 3, 'juguetón');
+console.log(silvestre.introduce());
+
+// El perro de Pepe, Cane de 2 años y estado feliz
+let cane = new Perro('Cane', 2, 'feliz', 'Pepe');
+console.log(cane.introduce());
+console.log(cane.saludaDueño());
+
+    </script>
+</body>
+</html>

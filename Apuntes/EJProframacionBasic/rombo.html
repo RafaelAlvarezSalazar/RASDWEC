@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Rombo</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Página web" />
+    <meta name="keywords" content="rombo, piramide, javascript" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      pre {
+        font-size: 16px;
+        line-height: 1.2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Generar un Rombo</h1>
+    <input type="number" id="numFilas" placeholder="Número de filas" min="1" />
+    <button onclick="crearRombo()">Generar Rombo</button>
+    <pre id="rombo"></pre>
+    <script type="text/javascript">
+      // Función para crear el rombo
+      function crearRombo() {
+        var numFilas = parseInt(document.getElementById("numFilas").value);
+        if (isNaN(numFilas) || numFilas < 1) {
+          document.getElementById("rombo").innerText =
+            "Por favor, ingresa un número válido mayor a 0.";
+          return;
+        }
+
+        var rombo = "";
+        var f, c;
+
+        // Parte ascendente del rombo
+        for (f = 1; f <= numFilas; f++) {
+          for (c = 1; c <= numFilas - f; c++) {
+            rombo += " ";
+          }
+          for (c = 1; c <= f; c++) {
+            rombo += "* ";
+          }
+          rombo += "\n";
+        }
+
+        // Parte descendente del rombo
+        for (f = numFilas - 1; f >= 1; f--) {
+          for (c = 1; c <= numFilas - f; c++) {
+            rombo += " ";
+          }
+          for (c = f; c >= 1; c--) {
+            rombo += "* ";
+          }
+          rombo += "\n";
+        }
+
+        // Mostrar el rombo en el elemento con id "rombo"
+        document.getElementById("rombo").innerText = rombo;
+      }
+    </script>
+  </body>
+</html>

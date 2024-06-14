@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pirámide de Números</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      pre {
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Función principal para crear la pirámide
+      function crearPiramide(numLineas) {
+        // Convertir la entrada a un número entero
+        numLineas = parseInt(numLineas);
+        // Validar que el número sea mayor a 0
+        if (isNaN(numLineas) || numLineas < 1) {
+          document.getElementById("piramide").innerText = "Por favor, ingresa un número válido mayor a 0.";
+          return;
+        }
+        var piramide = "";
+        // Construir la parte ascendente de la pirámide
+        piramide = construirPiramideAscendente(numLineas);
+        // Construir la parte descendente de la pirámide
+        piramide += construirPiramideDescendente(numLineas - 1);
+        // Mostrar la pirámide en el elemento con id "piramide"
+        document.getElementById("piramide").innerText = piramide;
+      }
+
+      // Función para construir la parte ascendente de la pirámide
+      function construirPiramideAscendente(numLineas) {
+        let piramide = "";
+        for (let i = 1; i <= numLineas; i++) {
+          // Agregar los números correspondientes para cada línea
+          piramide += agregarNumeros(i) + "\n";
+        }
+        return piramide;
+      }
+
+      // Función para construir la parte descendente de la pirámide
+      function construirPiramideDescendente(numLineas) {
+        let piramide = "";
+        for (let i = numLineas; i >= 1; i--) {
+          // Agregar los números correspondientes para cada línea
+          piramide += agregarNumeros(i) + "\n";
+        }
+        return piramide;
+      }
+
+      // Función para generar la cadena de números para una línea
+      function agregarNumeros(num) {
+        // Repetir el número 'num' veces y eliminar espacios adicionales
+        return (num + " ").repeat(num).trim();
+      }
+    </script>
+    <input
+      id="num_lineas"
+      placeholder="Tamaño Piramide"
+      onkeyup="crearPiramide(this.value)"
+    />
+    <p id="piramide"></p>
+  </body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="witdh=device-width, initial-scale=1.0">
+        <title>  </title>
+        <style>
+            label {
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        
+        input {
+            margin-bottom: 10px;
+        }
+            body {
+            text-align: center;
+            background-color: #f7f7f7; 
+            font-family: Arial, sans-serif;
+        }
+
+        fieldset {
+            width: 400px;
+            padding: 20px;
+            margin: 0 auto;
+            background-color: #fff; 
+            border: 1px solid #ccc; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+
+        legend {
+            font-weight: bold;
+            color: #555; /* Color del texto */
+        }
+
+        div {
+            padding: 10px;
+        }
+
+        input,
+        select,
+        textarea {
+            margin: 6px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease; 
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none; 
+            border-color: #f70a98;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        fieldset:hover {
+            background-color: rgba(230, 162, 195, 0.478);
+        }
+        
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color:rgba(240, 109, 172, 0.768); 
+            color: #fff; 
+            font-weight: bold;
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+        }
+
+        button:hover {
+            background-color: rgba(243, 9, 122, 0.982);
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: translateY(1px); /* Efecto de clic */
+        }
+
+        button:focus {
+            outline: none; /* Elimina el contorno en foco */
+        }
+        </style>
+    </head>
+    <body>
+        <form action="mailto:brainersapp@gmail.com" id="miForm">
+            <h1>Formulario</h1>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre"/>
+            <span id="msgNombre"></span>
+            <br/>
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" id="apellido"/>
+            <span id="msgApellido"></span>
+            <br/>
+            <label for="dni">DNI:</label>
+            <input type="text" name="dni" id="dni"/>
+            <span id="msgDNI"></span>
+            <br/>
+            <label for="email">Correo electronico:</label>
+            <input type="email" name="email" id="email" required>
+            <span id="msgEmail"></span>
+            <br/>
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" name="contraseña" id="contraseña" required>
+            <span id="msgContraseña"></span>
+            <br/>  
+            <label for="confContraseña">Confirmar contraseña:</label>
+            <input type="password" name="confContraseña" id="confContraseña" required>
+            <span id="msgContraseña2"></span>
+            <br/> 
+            <label for="telefono">Telefono:</label>
+            <input type="number" name="telefono" id="telefono" required>
+            <span id="msgTelefono"></span>
+            <br/>
+            Sexo:
+            <br/>
+            <label for="hombre">Hombre:</label>
+            <input type="radio" name="sexo" id="hombre" value="Hombre"/>
+            <br/><label for="mujer">Mujer:</label>
+            <input type="radio" name="sexo" id="mujer" value="Mujer"/>
+            <br/><label for="otro">Otro:</label>
+            <input type="radio" name="sexo" id="otro" value="Otro" checked/>
+            <br/>
+            <label for="publicidad">Enviar publicidad:</label>
+            <input type="checkbox" name="publicidad" id="publicidad" value="publi"/>
+            <br/>
+            <label for="foto">Incluir mi foto:</label>
+            <input type="file" name="foto" id="foto"/>
+            <br/>
+            
+            Selecciona los días con disponibilidad:<br>
+            <input type="checkbox" name="dias" value="lunes">Lunes<br>
+            <input type="checkbox" name="dias" value="martes">Martes<br>
+            <input type="checkbox" name="dias" value="miercoles">Miercoles<br>
+            <input type="checkbox" name="dias" value="jueves">Jueves<br>
+            <input type="checkbox" name="dias" value="viernes">Viernes<br>
+            <input type="checkbox" name="dias" value="sabado">Sabado<br>
+            <input type="checkbox" name="dias" value="domingo">Domingo<br>
+            <input type="checkbox" name="dias" id="todos" onclick="seleccionarTodos()"> Seleccionar todos</input>
+            <input type="checkbox" name="" id="ninguno"> Deseleccionar todos</input>
+            <input type="checkbox" name="" id="fines">Solo fines de semana</input>
+            <span id="msgDias"></span>
+            <br/>
+            <input type="submit" id="guardar" name="cambios" value="Guardar cambios">
+            <input type="reset" id="borrar" name="borrar" value="Borrar los datos introducidos"> 
+            <br/>
+        </form>
+        <script>
+            window.addEventListener("load", inicio);
+
+        function inicio(){
+            
+            //document.getElementById("guardar").addEventListener("click", validar);
+            document.getElementById("nombre").addEventListener("click", validarNombre);
+            document.getElementById("apellido").addEventListener("click", validarApellido);
+            document.getElementById("dni").addEventListener("input", validarDNI);
+            document.getElementById("email").addEventListener("input", validarEmail);
+            document.getElementById("contraseña").addEventListener("input", validarContraseña);
+            document.getElementById("confContraseña").addEventListener("input", validarContraseña2);
+            document.getElementById("telefono").addEventListener("input", validarTelefono);
+            document.getElementById("todos").addEventListener("click ", seleccionarTodos);
+            document.getElementById("ninguno").addEventListener("click ", desseleccionarTodos);
+            document.getElementById("fines").addEventListener("click ", seleccionarFines);
+            document.getElementById("miForm").addEventListener("change", validarDias);
+        }
+
+        function validarNombre() {
+            let elemento = document.getElementById("nombre");
+            let msg = document.getElementById("msgNombre");
+            elemento.addEventListener("input", function () {
+                if (elemento.value === "") {
+                    msg.innerHTML = "El nombre no puede estar vacío";
+                    msg.style.color = "red";
+                    return false;
+                } else { 
+                    return true;
+                }
+            });
+        }
+        function validarApellido(){
+            let elemento=document.getElementById("apellido");
+            let msg = document.getElementById("msgApellido");
+            elemento.addEventListener("input", function () {
+                if (elemento.value === "") {
+                    msg.innerHTML = "El apellido no puede estar vacío";
+                    msg.style.color = "red";
+                    return false;
+                } else { 
+                    msg.innerHTML = "✅"; 
+                    return true;
+                }
+            });
+        }
+        function validarDNI(){
+            let nif=document.getElementById("dni").value;
+            nif = nif.toUpperCase(); 
+            const patron = /^[0-9]{8}[A-Z]$/; 
+            let msg = document.getElementById("msgDNI");
+                if(nif===""){
+                    msg.innerHTML = "El DNI no puede estar vacío";
+                    msg.style.color = "red";
+                    return false;
+                }
+                else if (!patron.test(nif)) {
+                    msg.innerHTML = "Contiene carácteres no válidos";
+                    msg.style.color = "red";
+                    return false;
+                }
+                // Comprbar letra
+                const letraControl = calcularLetraControl(nif.slice(0, 8));
+                const letraNIF = nif.charAt(8); 
+                //compararla con la valida
+                if(letraControl !== letraNIF){
+                    msg.innerHTML = "La letra no es válida";
+                    msg.style.color = "red";
+                    return false;
+                }
+                else{ 
+                    msg.innerHTML = "✅";
+                    return true;
+                }
+        }
+        function calcularLetraControl(numero) {
+            const letras = "TRWAGMYFPDXBNJZSQVHLCKET";
+            const resto = numero % 23;
+            return letras.charAt(resto);
+        }
+        function validarEmail(){
+            const email=document.getElementById("email").value;
+            let msg = document.getElementById("msgEmail");
+            if (!/^\S+@\S+\.\S+$/.test(email)) {
+                msg.innerHTML = "Email no válido";
+                msg.style.color = "red";
+                return false;
+            }
+            else{
+                msg.innerHTML = "✅";
+                return true;
+            }
+            
+        }
+        function validarContraseña(){
+            let contraseña= document.getElementById("contraseña").value;
+            let msg = document.getElementById("msgContraseña");
+            if (contraseña.length < 8){
+                msg.innerHTML = "Contraseña demasiado corta";
+                msg.style.color = "red";
+                return false;
+            } else if (!/[a-zA-Z]/.test(contraseña)) {
+                msg.innerHTML = "Debe contener al menos una letra";
+                msg.style.color = "red";
+                return false;
+            } 
+            else if ( !/[A-Z]/.test(contraseña)){
+                msg.innerHTML = "Debe contener al menos una letra mayúscula";
+                msg.style.color = "red";
+                return false;
+            }
+            else if (!/[0-9]/.test(contraseña)){
+                msg.innerHTML = "Debe contener al menos un dígito";
+                msg.style.color = "red";
+                return false;
+            }
+            else if (!/[^\w\s]/.test(contraseña)){
+                msg.innerHTML = "Debe contener al menos un carácter especial";
+                msg.style.color = "red";
+                return false;
+            }
+            else{
+                msg.innerHTML = "✅";
+                return true;
+            }
+            
+        }
+        function validarContraseña2(){
+            let contraseña= document.getElementById("contraseña").value;
+            const contraseña2=document.getElementById("confContraseña").value;
+            let msg = document.getElementById("msgContraseña2");
+            if (contraseña2!==contraseña){ //si no es igual que la contraseña antes introducida
+                msg.innerHTML="Las contraseñas tienen que ser las mismas";
+                msg.style.color = "red";
+                return false;
+            }
+            else{
+                msg.innerHTML = "✅";
+                return true;
+            }
+        }
+        function seleccionarTodos(){
+            const dias = document.getElementsByName("dias");
+            var selectTodoCheckbox = document.getElementById("todos");
+            for (var i = 0; i < dias.length; i++) {
+                dias[i].checked = selectTodoCheckbox.checked;
+        }
+        }
+
+        
+
+        function desseleccionarTodos(){
+            const dias = document.getElementsByName("dias");
+            for (let i = 0; i < dias.length; i++) {
+                if (dias[i].type === "checkbox") {
+                    dias[i].checked = false;
+                }
+            }
+        }
+
+        function seleccionarFines() {
+            const dias = document.getElementsByName("dias");
+            for (let i = 0; i < dias.length; i++) {
+                if (dias[i].value === "sabado" || dias[i].value === "domingo") {
+                    dias[i].checked = true;
+                } else {
+                    dias[i].checked = false;
+                }
+            }
+        }
+
+        function validarDias(e) {
+            alert("validar");
+            if (e.target.name === "dias") {
+            let seleccionados = 0;
+            const dias = document.getElementsByName("dias");
+
+            for (let i = 0; i < dias.length; i++) {
+                if (dias[i].checked) {
+                    seleccionados++;
+                }
+            }
+
+            if (seleccionados >= 2) {
+                document.getElementById("msgDias").innerHTML = "";
+                return true;
+            } else if (seleccionados < 2 && seleccionados > 0) {
+                document.getElementById("msgDias").innerHTML = "Al menos tienes que seleccionar dos días";
+                document.getElementById("msgDias").style.color = "red";
+                return false;
+            }
+            }
+        }
+
+        function validar(){
+            if (validarNombre() && validarApellido() && validarDNI()){
+                return true;
+            }
+            else{
+                event.preventDefault();
+                return false;
+            }
+        }
+        </script>
+    </body>
+    </html>

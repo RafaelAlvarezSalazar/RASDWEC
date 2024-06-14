@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function numeroDeCaracteres(cadena, caracter) {
+        let contador = 0;
+        for (let i = 0; i < cadena.length; i++) {
+          if (cadena.charAt(i) === caracter) {
+            contador++;
+          }
+        }
+        return contador;
+      }
+
+      // Solicitar datos al usuario
+      const cadenaUsuario = prompt("Introduce una cadena de texto:");
+      let caracterUsuario = prompt("Introduce un carácter:");
+
+      // Verificar si el usuario ha introducido más de un carácter y solicitar de nuevo
+      while (caracterUsuario.length !== 1) {
+        alert("Por favor, introduce un solo carácter.");
+        caracterUsuario = prompt("Introduce un carácter:");
+      }
+
+      const resultado = numeroDeCaracteres(cadenaUsuario, caracterUsuario);
+      alert(
+        `El carácter "${caracterUsuario}" aparece ${resultado} veces en la cadena "${cadenaUsuario}".`
+      );
+    </script>
+  </body>
+</html>
